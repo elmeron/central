@@ -41,6 +41,16 @@ router.get('/getGameHosts', function(req, res) {
 });
 
 
+router.get('/getGameHost', function(req, res) {
+	HostHandler.getGameHost(function(host) {
+		res.send({
+			success: true,
+			address: host
+		});
+	});
+});
+
+
 router.get('/getProfileHosts', function(req, res) {
 	HostHandler.getProfileHosts(function(hosts) {
 		res.json(hosts);

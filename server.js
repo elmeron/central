@@ -16,7 +16,7 @@ var config = require('./config');
 var clientApi = require('./routes/client-api');
 var hostApi = require('./routes/host-api');
 
-var port = process.env.PORT || 3000;
+var port = process.argv[2] || process.env.PORT || 3000;
 app.set('secret', config.secret);
 app.set('database', config.database);
 
