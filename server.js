@@ -20,6 +20,32 @@ var port = process.env.PORT || 3000;
 app.set('secret', config.secret);
 app.set('database', config.database);
 
+// database initialization
+mongoose.connect(config.database);
+
+// on successful connection
+mongoose.connection.on('connected', function() {
+	console.log('database connected to url: ' + config.database);
+});
+
+// on connection error
+mongoose.connection.on('error', function(err) {
+	throw err;
+});
+
+// when disconnected
+mongoose.connection.on('disconnected', function() {
+	console.log('database disconnected');
+});
+
+// if the Node process ends
+process.on('SIGINT', function() {
+	mongoose.connection.close(function() {
+		console.log('database closed through node');
+		process.exit(0);
+	});
+});
+
 // parse POST requests
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
