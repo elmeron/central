@@ -4,7 +4,7 @@
   "description": "Elmeron main interface",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nodeunit tests",
     "start": "node server.js"
   },
   "repository": {
@@ -26,6 +26,7 @@
     "express": "^4.13.4",
     "jsonwebtoken": "^5.7.0",
     "mongoose": "^4.4.7",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "nodeunit": "^0.9.1"
   }
 }
