@@ -9,6 +9,13 @@ var router = express.Router();
 var HostHandler = require('../lib/host-handler');
 
 
+// verify host token
+router.use(function(req, res, next) {
+	// TODO: implement
+	next();
+});
+
+
 router.get('/', function(req, res) {
 	res.send({
 		message: "Elmeron Central Host API"
